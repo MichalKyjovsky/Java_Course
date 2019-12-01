@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="33d2f4ec-3f94-434f-9a2c-a9a5dde9fa05" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1UKiGCC4yLD4VkoFUHIyjT4sGSV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="cz.cuni.mff.ms.Main" />
+      <module name="CALC-VARS" />
+      <option name="REDIRECT_INPUT" value="true" />
+      <option name="INPUT_FILE" value="$PROJECT_DIR$/INPUT" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="33d2f4ec-3f94-434f-9a2c-a9a5dde9fa05" name="Default Changelist" comment="" />
+      <created>1575111589689</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575111589689</updated>
+      <workItem from="1575111594288" duration="12649000" />
+      <workItem from="1575128823652" duration="584000" />
+      <workItem from="1575130522484" duration="7182000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="418" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575128929497">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="418" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575128929497" />
+    <state x="692" y="326" width="525" height="427" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1575128927591">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="692" y="326" width="525" height="427" key="#com.intellij.ide.util.TreeClassChooserDialog/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575128927591" />
+    <state x="801" y="432" width="308" height="214" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1575128961899">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="801" y="432" width="308" height="214" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575128961899" />
+    <state x="643" y="268" width="624" height="543" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575129000577">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="643" y="268" width="624" height="543" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575129000577" />
+    <state width="1874" height="328" key="GridCell.Tab.0.bottom" timestamp="1575140907500">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="328" key="GridCell.Tab.0.bottom/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
+    <state width="1874" height="328" key="GridCell.Tab.0.center" timestamp="1575140907500">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="328" key="GridCell.Tab.0.center/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
+    <state width="1874" height="328" key="GridCell.Tab.0.left" timestamp="1575140907500">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="328" key="GridCell.Tab.0.left/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
+    <state width="1874" height="328" key="GridCell.Tab.0.right" timestamp="1575140907500">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="328" key="GridCell.Tab.0.right/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
+    <state width="1874" height="328" key="GridCell.Tab.1.bottom" timestamp="1575140907500">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="328" key="GridCell.Tab.1.bottom/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
+    <state width="1874" height="328" key="GridCell.Tab.1.center" timestamp="1575140907500">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="328" key="GridCell.Tab.1.center/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
+    <state width="1874" height="328" key="GridCell.Tab.1.left" timestamp="1575140907500">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="328" key="GridCell.Tab.1.left/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
+    <state width="1874" height="328" key="GridCell.Tab.1.right" timestamp="1575140907500">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="328" key="GridCell.Tab.1.right/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
+    <state x="449" y="175" key="SettingsEditor" timestamp="1575130621096">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="449" y="175" key="SettingsEditor/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575130621096" />
+    <state x="616" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1575130592918">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="616" y="367" key="com.intellij.ide.util.TipDialog/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575130592918" />
+    <state x="616" y="1447" key="com.intellij.ide.util.TipDialog/0.1080.1920.1080/0.0.1920.1080@0.1080.1920.1080" timestamp="1575128824377" />
+    <state x="269" y="142" width="1372" height="795" key="new project wizard" timestamp="1575129406546">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="269" y="142" width="1372" height="795" key="new project wizard/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575129406546" />
+    <state x="704" y="413" width="714" height="300" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1575129214827">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="704" y="413" width="714" height="300" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575129214827" />
+    <state x="623" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1575135394995">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="239" width="672" height="678" key="search.everywhere.popup/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575135394995" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/cz/cuni/mff/ms/Calculator.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
