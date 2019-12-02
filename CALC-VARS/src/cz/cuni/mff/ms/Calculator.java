@@ -1,34 +1,91 @@
 package cz.cuni.mff.ms;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.Stack;
-import java.util.concurrent.LinkedBlockingDeque;
 
 public class Calculator {
     public String calculateInput(String input) {
 
-        Stack<Double> numbers = new Stack<>();
-        Stack<String> operators = new Stack<>();
-        StringBuilder output = new StringBuilder();
-        boolean first = false;
+        String inputLine;
+        String variable = "";
+        boolean varIsPresent = false;
+        HashMap<String,Double> variables = new HashMap();
+        inputLine = input;
 
         if(filterBadInput(input)){
             return "ERROR";
         }
-        String[] formula = refactorInputLine(input);
+
+        if (input.contains("=")){
+            inputLine = input.substring(input.indexOf('=') + 1);
+            variable = input.substring(0, input.indexOf('=')).trim();
+            varIsPresent = true;
+        }
+
+        String[] formula = refactorInputLine(inputLine);
+        String[] expression = postfixConversion(formula).split(" ");
+
+        Stack<Double> stack = new Stack<>();
         double number;
+        double numA;
+        double numB;
+
+        for (String item : expression){
+            try {
+                number = Double.parseDouble(item);
+                stack.push(number);
+            }catch (Exception e){
+                switch (item){
+                    case "+":
+                        numA = stack.pop();
+                        numB = stack.pop();
+                        stack.push(numA + numB);
+                        break;
+                    case "-":
+                        numA = stack.pop();
+                        numB = stack.pop();
+                        stack.push(numB - numA);
+                        break;
+                    case "*":
+                        numA = stack.pop();
+                        numB = stack.pop();
+                        stack.push(numA * numB);
+                        break;
+                    case "/":
+                        numA = stack.pop();
+                        numB = stack.pop();
+                        stack.push(numB / numA);
+                        break;
+                }
+            }
+        }
+
+        if(varIsPresent){
+            variables.put(variable,stack.peek());
+            varIsPresent = false;
+        }
+        return String.format("%.5f",stack.pop());
+    }
+
+
+    public String postfixConversion(String[] formula) {
+        Stack<Double> numbers = new Stack<>();
+        Stack<String> operators = new Stack<>();
+        StringBuilder output = new StringBuilder();
+        boolean first = false;
+        double number;
+
 
         for (String item : formula) {
             try {
                 number = Double.parseDouble(item);
                 output.append(number + " ");
-            }catch (Exception e) {
+            } catch (Exception e) {
 
-                if (!first){
+                if (!first) {
                     operators.push(item);
                     first = true;
-                }else {
+                } else {
                     switch (item.strip()) {
                         case "+":
                             if (operators.empty() || operators.peek().equals("(")) {
@@ -75,16 +132,11 @@ public class Calculator {
                 }
             }
         }
-        if(!operators.empty()){
+        if (!operators.empty()) {
             output.append(operators.pop());
         }
-
-
-        System.out.println(output.toString());
-        return output.toString();
+        return  output.toString();
     }
-
-
 
     public String[] refactorInputLine(String input){
         input = input.trim();

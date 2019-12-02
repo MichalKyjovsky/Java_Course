@@ -9,13 +9,18 @@ public class Main {
         Calculator calculator = new Calculator();
 
         ArrayList<String> lines = inputConverter.manageInput();
+        String last = "";
 
 
         for(int i = 0; i < lines.size(); i++) {
             if(lines.get(i).equals("")){
                 continue;
+            }else if (lines.get(i).equals("last")){
+                System.out.println(last);
+            }else {
+                last = calculator.calculateInput(lines.get(i));
+                System.out.println(last);
             }
-             System.out.println(calculator.calculateInput(lines.get(i)));
         }
 
 
