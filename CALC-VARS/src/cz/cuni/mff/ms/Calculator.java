@@ -56,8 +56,13 @@ public class Calculator {
             for (String item : expression) {
                 try {
                     if(!containsNumbers(item) && !containsOperand(item)){
-                        number = variables.get(item);
-                        stack.push(number);
+                        if(variables.containsKey(item)) {
+                            number = variables.get(item);
+                            stack.push(number);
+                        }else{
+                            variables.put(item,(double)0);
+                            stack.push((double)0);
+                        }
                     }else {
                         number = Double.parseDouble(item);
                         stack.push(number);
