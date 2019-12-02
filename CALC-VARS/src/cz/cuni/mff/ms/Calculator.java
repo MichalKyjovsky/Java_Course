@@ -3,11 +3,20 @@ import java.util.Stack;
 
 public class Calculator {
 
-    static HashMap<String,Double> variables = new HashMap();
-    static double last = 0;
+    HashMap<String,Double> variables;
+    double last;
+
+    public Calculator(){
+        this.variables = new HashMap();
+        this.last = 0;
+        variables.put("last",(double)0);
+    }
 
     public String calculateInput(String input) {
 
+        if (input.equals("last")){
+            return String.format("%.5f",last);
+        }
 
         String inputLine = input;
         String variable = "";
@@ -26,7 +35,8 @@ public class Calculator {
         }
 
             String[] formula = refactorInputLine(inputLine);
-            String[] expression = postfixConversion(formula).split(" ");
+            String expr = postfixConversion(formula);
+            String[] expression = expr.split(" ");
 
             if(expression.length == 1 && !containsNumbers(expression[0]) && !containsOperand(expression[0])){
                 if(variables.containsKey(expression[0])){
@@ -84,8 +94,6 @@ public class Calculator {
                 varIsPresent = false;
             }
 
-
-
         last = stack.peek();
 
         return String.format("%.5f",stack.pop());
@@ -102,6 +110,7 @@ public class Calculator {
                 case '(':
                 case ')':
                 case 'e':
+                case '=':
                     return true;
             }
         }
@@ -162,32 +171,40 @@ public class Calculator {
                             if (operators.empty() || operators.peek().equals("(")) {
                                 operators.push("+");
                             } else {
-                                output.append(operators.pop() + " ");
+                                while (!(operators.empty())) {
+                                    output.append(operators.pop() + " ");
+                                }
+                                operators.push(item);
                             }
                             break;
                         case "-":
                             if (operators.empty() || operators.peek().equals("(")) {
                                 operators.push("-");
                             } else {
-                                output.append(operators.pop() + " ");
+                                while (!(operators.empty())) {
+                                    output.append(operators.pop() + " ");
+                                }
+                                operators.push(item);
                             }
                             break;
                         case "*":
-                            if (operators.peek().equals("+") || operators.peek().equals("-") || operators.empty()) {
+                            if (operators.peek().equals("+") || operators.peek().equals("-") || operators.empty() || operators.peek().equals("(")) {
                                 operators.push("*");
                             } else {
-                                while (operators.peek().equals("+") || operators.peek().equals("-") || operators.empty()) {
+                                while (operators.peek().equals("*") || operators.peek().equals("/") || operators.empty()) {
                                     output.append(operators.pop() + " ");
                                 }
+                                operators.push(item);
                             }
                             break;
                         case "/":
-                            if (operators.peek().equals("+") || operators.peek().equals("-")) {
+                            if (operators.peek().equals("+") || operators.peek().equals("-") || operators.empty() ||operators.peek().equals("(")) {
                                 operators.push("/");
                             } else {
-                                while (operators.peek().equals("+") || operators.peek().equals("-")) {
+                                while (operators.peek().equals("*") || operators.peek().equals("/") || operators.empty()) {
                                     output.append(operators.pop() + " ");
                                 }
+                                operators.push(item);
                             }
                             break;
                         case "(":
@@ -203,8 +220,8 @@ public class Calculator {
                 }
             }
         }
-        if (!operators.empty()) {
-            output.append(operators.pop());
+        while (!operators.empty()) {
+            output.append(operators.pop() + " ");
         }
         return  output.toString();
     }
@@ -252,7 +269,9 @@ public class Calculator {
 
         if (!containsChars(input) && !containsNumbers(input)){
             return true;
-        }else if(containsNumbers(input) && !containsOperand(input)){
+        }else if(containsNumbers(input) && !containsOperand(input) && input.contains(" ")){
+            return true;
+        }else if(containsChars(input) && input.contains(" ") && !containsOperand(input)){
             return true;
         }
 
