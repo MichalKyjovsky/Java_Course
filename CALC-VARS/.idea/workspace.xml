@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="33d2f4ec-3f94-434f-9a2c-a9a5dde9fa05" name="Default Changelist" comment="" />
+    <list default="true" id="33d2f4ec-3f94-434f-9a2c-a9a5dde9fa05" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INPUT" beforeDir="false" afterPath="$PROJECT_DIR$/INPUT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/cuni/mff/ms/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/cuni/mff/ms/Calculator.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,13 +18,18 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1UKiGCC4yLD4VkoFUHIyjT4sGSV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -68,6 +77,7 @@
       <workItem from="1575111594288" duration="12649000" />
       <workItem from="1575128823652" duration="584000" />
       <workItem from="1575130522484" duration="7182000" />
+      <workItem from="1575272818984" duration="5485000" />
     </task>
     <servers />
   </component>
@@ -91,47 +101,56 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="643" y="268" width="624" height="543" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575129000577" />
-    <state width="1874" height="328" key="GridCell.Tab.0.bottom" timestamp="1575140907500">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1874" height="317" key="GridCell.Tab.0.bottom" timestamp="1575288269328">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1874" height="328" key="GridCell.Tab.0.bottom/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
-    <state width="1874" height="328" key="GridCell.Tab.0.center" timestamp="1575140907500">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1874" height="317" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1575288269328" />
+    <state width="1874" height="317" key="GridCell.Tab.0.center" timestamp="1575288269328">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1874" height="328" key="GridCell.Tab.0.center/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
-    <state width="1874" height="328" key="GridCell.Tab.0.left" timestamp="1575140907500">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1874" height="317" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1575288269328" />
+    <state width="1874" height="317" key="GridCell.Tab.0.left" timestamp="1575288269328">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1874" height="328" key="GridCell.Tab.0.left/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
-    <state width="1874" height="328" key="GridCell.Tab.0.right" timestamp="1575140907500">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1874" height="317" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1575288269328" />
+    <state width="1874" height="317" key="GridCell.Tab.0.right" timestamp="1575288269328">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1874" height="328" key="GridCell.Tab.0.right/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
-    <state width="1874" height="328" key="GridCell.Tab.1.bottom" timestamp="1575140907500">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1874" height="317" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1575288269328" />
+    <state width="1874" height="317" key="GridCell.Tab.1.bottom" timestamp="1575288269448">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1874" height="328" key="GridCell.Tab.1.bottom/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
-    <state width="1874" height="328" key="GridCell.Tab.1.center" timestamp="1575140907500">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1874" height="317" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1575288269448" />
+    <state width="1874" height="317" key="GridCell.Tab.1.center" timestamp="1575288269448">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1874" height="328" key="GridCell.Tab.1.center/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
-    <state width="1874" height="328" key="GridCell.Tab.1.left" timestamp="1575140907500">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1874" height="317" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1575288269448" />
+    <state width="1874" height="317" key="GridCell.Tab.1.left" timestamp="1575288269448">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1874" height="328" key="GridCell.Tab.1.left/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
-    <state width="1874" height="328" key="GridCell.Tab.1.right" timestamp="1575140907500">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1874" height="317" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1575288269448" />
+    <state width="1874" height="317" key="GridCell.Tab.1.right" timestamp="1575288269448">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1874" height="328" key="GridCell.Tab.1.right/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575140907500" />
+    <state width="1874" height="317" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1575288269448" />
     <state x="449" y="175" key="SettingsEditor" timestamp="1575130621096">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="449" y="175" key="SettingsEditor/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575130621096" />
-    <state x="616" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1575130592918">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="616" y="385" key="com.intellij.ide.util.TipDialog" timestamp="1575272820872">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="616" y="367" key="com.intellij.ide.util.TipDialog/0.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1575130592918" />
     <state x="616" y="1447" key="com.intellij.ide.util.TipDialog/0.1080.1920.1080/0.0.1920.1080@0.1080.1920.1080" timestamp="1575128824377" />
+    <state x="616" y="385" key="com.intellij.ide.util.TipDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1575272820872" />
     <state x="269" y="142" width="1372" height="795" key="new project wizard" timestamp="1575129406546">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -150,8 +169,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/cz/cuni/mff/ms/Calculator.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="9" />
+          <line>82</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
