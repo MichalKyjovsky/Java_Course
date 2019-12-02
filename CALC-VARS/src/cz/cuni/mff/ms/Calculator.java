@@ -28,7 +28,7 @@ public class Calculator {
             return "ERROR";
         }
 
-        if (input.contains("=")){
+        if (input.contains("=") && !containsNumbers(input.substring(0,input.indexOf('='))) && !containsOperand(input.substring(0,input.indexOf('=')))){
             inputLine = input.substring(input.indexOf('=') + 1);
             variable = input.substring(0, input.indexOf('=')).trim();
             varIsPresent = true;
@@ -68,6 +68,7 @@ public class Calculator {
                         stack.push(number);
                     }
                 } catch (Exception e) {
+                    if (stack.size() > 1){
                     switch (item) {
                         case "+":
                             numA = stack.pop();
@@ -89,6 +90,10 @@ public class Calculator {
                             numB = stack.pop();
                             stack.push(numB / numA);
                             break;
+                    }
+                    }else {
+                        last = 0;
+                        return "ERROR";
                     }
                 }
             }
