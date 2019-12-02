@@ -1,18 +1,21 @@
-package cz.cuni.mff.ms;
-
 import java.util.HashMap;
 import java.util.Stack;
 
 public class Calculator {
+
+    static HashMap<String,Double> variables = new HashMap();
+    static double last = 0;
+
     public String calculateInput(String input) {
 
-        String inputLine;
+
+        String inputLine = input;
         String variable = "";
+
         boolean varIsPresent = false;
-        HashMap<String,Double> variables = new HashMap();
-        inputLine = input;
 
         if(filterBadInput(input)){
+            last = 0;
             return "ERROR";
         }
 
@@ -22,49 +25,114 @@ public class Calculator {
             varIsPresent = true;
         }
 
-        String[] formula = refactorInputLine(inputLine);
-        String[] expression = postfixConversion(formula).split(" ");
+            String[] formula = refactorInputLine(inputLine);
+            String[] expression = postfixConversion(formula).split(" ");
 
-        Stack<Double> stack = new Stack<>();
-        double number;
-        double numA;
-        double numB;
-
-        for (String item : expression){
-            try {
-                number = Double.parseDouble(item);
-                stack.push(number);
-            }catch (Exception e){
-                switch (item){
-                    case "+":
-                        numA = stack.pop();
-                        numB = stack.pop();
-                        stack.push(numA + numB);
-                        break;
-                    case "-":
-                        numA = stack.pop();
-                        numB = stack.pop();
-                        stack.push(numB - numA);
-                        break;
-                    case "*":
-                        numA = stack.pop();
-                        numB = stack.pop();
-                        stack.push(numA * numB);
-                        break;
-                    case "/":
-                        numA = stack.pop();
-                        numB = stack.pop();
-                        stack.push(numB / numA);
-                        break;
+            if(expression.length == 1 && !containsNumbers(expression[0]) && !containsOperand(expression[0])){
+                if(variables.containsKey(expression[0])){
+                    return String.format("%.5f",variables.get(expression[0]));
+                }else {
+                    variables.put(expression[0],(double)0);
+                    return String.format("%.5f",(double)0);
                 }
             }
-        }
 
-        if(varIsPresent){
-            variables.put(variable,stack.peek());
-            varIsPresent = false;
-        }
+            Stack<Double> stack = new Stack<>();
+            double number;
+            double numA;
+            double numB;
+
+
+            for (String item : expression) {
+                try {
+                    if(!containsNumbers(item) && !containsOperand(item)){
+                        number = variables.get(item);
+                        stack.push(number);
+                    }else {
+                        number = Double.parseDouble(item);
+                        stack.push(number);
+                    }
+                } catch (Exception e) {
+                    switch (item) {
+                        case "+":
+                            numA = stack.pop();
+                            numB = stack.pop();
+                            stack.push(numA + numB);
+                            break;
+                        case "-":
+                            numA = stack.pop();
+                            numB = stack.pop();
+                            stack.push(numB - numA);
+                            break;
+                        case "*":
+                            numA = stack.pop();
+                            numB = stack.pop();
+                            stack.push(numA * numB);
+                            break;
+                        case "/":
+                            numA = stack.pop();
+                            numB = stack.pop();
+                            stack.push(numB / numA);
+                            break;
+                    }
+                }
+            }
+
+
+            if (varIsPresent && !stack.empty()) {
+                variables.put(variable, stack.peek());
+                varIsPresent = false;
+            }
+
+
+
+        last = stack.peek();
+
         return String.format("%.5f",stack.pop());
+    }
+
+    public boolean containsOperand(String input){
+        boolean containsOper = false;
+        for (char item:input.toCharArray()){
+            switch (item){
+                case '+':
+                case '/':
+                case '-':
+                case '*':
+                case '(':
+                case ')':
+                case 'e':
+                    return true;
+            }
+        }
+        return false;
+    }
+
+
+    public boolean containsChars(String input){
+        boolean charIsPresent = false;
+        for (char item : input.toCharArray()){
+            if ((item > 'a' && item < 'z') || (item > 'A' && item < 'Z')){
+                charIsPresent = true;
+                break;
+            }else {
+                charIsPresent = false;
+            }
+        }
+        return charIsPresent;
+    }
+
+    public boolean containsNumbers(String input){
+        boolean numIsPresent = false;
+        for (char item : input.toCharArray()){
+            if (item > '0' && item < '9'){
+                numIsPresent = true;
+                break;
+            }else {
+                numIsPresent = false;
+            }
+        }
+        return numIsPresent;
     }
 
 
@@ -78,10 +146,13 @@ public class Calculator {
 
         for (String item : formula) {
             try {
+                if (!containsOperand(item)){
+                    output.append(item + " ");
+                    continue;
+                }
                 number = Double.parseDouble(item);
                 output.append(number + " ");
             } catch (Exception e) {
-
                 if (!first) {
                     operators.push(item);
                     first = true;
@@ -160,7 +231,9 @@ public class Calculator {
                     }
                     break;
                 case '-':
-                    if(i == 0){
+                    if(i == 0) {
+                        editedInput.append(input.charAt(i));
+                    }else if(input.charAt(i-1) == 'e'){
                         editedInput.append(input.charAt(i));
                     }else if(input.substring(0,i).matches(".*\\d.*")){
                         editedInput.append(" " + input.charAt(i) + " ");
@@ -176,6 +249,14 @@ public class Calculator {
     }
 
     public boolean filterBadInput(String input) {
+
+        if (!containsChars(input) && !containsNumbers(input)){
+            return true;
+        }else if(containsNumbers(input) && !containsOperand(input)){
+            return true;
+        }
+
+
         for (int i = 0; i < input.length() - 1; i++) {
             if (input.trim().charAt(i) == '+' || input.trim().charAt(i) == '-' || input.trim().charAt(i) == '*' || input.trim().charAt(i) == '/') {
                 if (input.trim().charAt(i + 1) == '+' || input.trim().charAt(i + 1) == '-' || input.trim().charAt(i + 1) == '*' || input.trim().charAt(i + 1) == '/') {
