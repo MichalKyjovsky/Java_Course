@@ -185,67 +185,83 @@ public class Calculator {
                 } else {
                     switch (item.strip()) {
                         case "+":
-                            if (operators.empty() || operators.peek().equals("(")) {
-                                operators.push("+");
-                            } else {
-                                try {
-                                    while (!(operators.empty()) || operators.peek().equals("(")) {
-                                        if(!operators.peek().equals("(")) {
+                            try {
+                                if (operators.empty() || operators.peek().equals("(")) {
+                                    operators.push("+");
+                                } else {
+                                    try {
+                                        while (!(operators.empty()) || operators.peek().equals("(")) {
+                                            if (!operators.peek().equals("(")) {
+                                                output.append(operators.pop() + " ");
+                                            } else {
+                                                break;
+                                            }
+                                        }
+                                        operators.push(item);
+                                    } catch (Exception e2) {
+                                        operators.push(item);
+                                    }
+                                }
+                            }catch (Exception e3){
+                                operators.push(item);
+                            }
+                            break;
+                        case "-":
+                            try {
+                                if (operators.empty() || operators.peek().equals("(")) {
+                                    operators.push("-");
+                                } else {
+                                    try {
+                                        while (!(operators.empty()) || operators.peek().equals("(")) {
+                                            if (!operators.peek().equals("(")) {
+                                                output.append(operators.pop() + " ");
+                                            } else {
+                                                break;
+                                            }
+                                            ;
+                                        }
+                                        operators.push(item);
+                                    } catch (Exception e2) {
+                                        operators.push(item);
+                                    }
+                                }
+                            }catch (Exception e3){
+                                operators.push(item);
+                            }
+                            break;
+                        case "*":
+                            try {
+                                if (operators.peek().equals("+") || operators.peek().equals("-") || operators.empty() || operators.peek().equals("(")) {
+                                    operators.push("*");
+                                } else {
+                                    while (operators.peek().equals("*") || operators.peek().equals("/") || operators.empty()) {
+                                        if (!operators.peek().equals("(")) {
                                             output.append(operators.pop() + " ");
-                                        }else{
+                                        } else {
                                             break;
                                         }
                                     }
                                     operators.push(item);
-                                } catch (Exception e2) {
-                                    operators.push(item);
                                 }
-                            }
-                            break;
-                        case "-":
-                            if (operators.empty() || operators.peek().equals("(")) {
-                                operators.push("-");
-                            } else {
-                                try {
-                                    while (!(operators.empty()) || operators.peek().equals("(")) {
-                                        if(!operators.peek().equals("(")) {
-                                            output.append(operators.pop() + " ");
-                                        }else{
-                                            break;
-                                        };
-                                    }
-                                    operators.push(item);
-                                }catch (Exception e2){
-                                    operators.push(item);
-                                }
-                            }
-                            break;
-                        case "*":
-                            if (operators.peek().equals("+") || operators.peek().equals("-") || operators.empty() || operators.peek().equals("(")) {
-                                operators.push("*");
-                            } else {
-                                while (operators.peek().equals("*") || operators.peek().equals("/") || operators.empty()) {
-                                    if(!operators.peek().equals("(")) {
-                                        output.append(operators.pop() + " ");
-                                    }
-                                    else{
-                                        break;
-                                    }
-                                }
+                            }catch (Exception e3){
                                 operators.push(item);
                             }
                             break;
                         case "/":
-                            if (operators.peek().equals("+") || operators.peek().equals("-") || operators.empty() ||operators.peek().equals("(")) {
-                                operators.push("/");
-                            } else {
-                                while (operators.peek().equals("*") || operators.peek().equals("/") || operators.empty()) {
-                                    if(!operators.peek().equals("(")) {
-                                        output.append(operators.pop() + " ");
-                                    }else{
-                                        break;
+                            try {
+                                if (operators.peek().equals("+") || operators.peek().equals("-") || operators.empty() || operators.peek().equals("(")) {
+                                    operators.push("/");
+                                } else {
+                                    while (operators.peek().equals("*") || operators.peek().equals("/") || operators.empty()) {
+                                        if (!operators.peek().equals("(")) {
+                                            output.append(operators.pop() + " ");
+                                        } else {
+                                            break;
+                                        }
                                     }
+                                    operators.push(item);
                                 }
+                            }catch (Exception e3){
                                 operators.push(item);
                             }
                             break;
@@ -293,7 +309,9 @@ public class Calculator {
                     try {
                         if ((containsNumbers(Character.toString(input.charAt(i+1)))) && (containsOperand(Character.toString(input.charAt(i-1))))){
                             editedInput.append(input.charAt(i));
-                        }else {
+                        }else if (i == 0 && containsOperand(Character.toString(input.charAt(i+1)))){
+                            editedInput.append(input.charAt(i)+ "1 * ");
+                        } else {
                             editedInput.append(" " +input.charAt(i) + " ");
                         }
                     }catch (Exception e){
@@ -303,17 +321,6 @@ public class Calculator {
                             editedInput.append(input.charAt(i));
                         }
                     }
-//                    if(editedInput.length() > 0){
-//                        String b = editedInput.toString().stripTrailing();
-//                        String a = Character.toString(b.stripTrailing().charAt(b.length() - 1));
-//                        if(editedInput.length() > 0 && containsNumbers(a)){
-//                            editedInput.append(" " + input.charAt(i) + " ");
-//                        }else if (editedInput.length() > 0 && containsOperand(a)) {
-//                            editedInput.append(input.charAt(i));
-//                        }
-//                    }else{
-//                        editedInput.append(input.charAt(i));
-//                    }
                     break;
                 case ' ':
                     break;
