@@ -15,7 +15,7 @@ public class Calculator {
     public String calculateInput(String input) {
 
         if (input.equals("last")){
-            return String.format("%.5f",last);
+            return String.format("%.5f",variables.get("last"));
         }
 
         String inputLine = input;
@@ -24,7 +24,7 @@ public class Calculator {
         boolean varIsPresent = false;
 
         if(filterBadInput(input)){
-            last = 0;
+            variables.replace("last",(double)0);
             return "ERROR";
         }
 
@@ -37,6 +37,7 @@ public class Calculator {
             String[] formula = refactorInputLine(inputLine);
             String expr = postfixConversion(formula);
             String[] expression = expr.split(" ");
+
 
             if(expression.length == 1 && !containsNumbers(expression[0]) && !containsOperand(expression[0])){
                 if(variables.containsKey(expression[0])){
@@ -54,6 +55,10 @@ public class Calculator {
 
 
             for (String item : expression) {
+                if (item.equals("")){
+                    continue;
+                }
+
                 try {
                     if(!containsNumbers(item) && !containsOperand(item)){
                         if(variables.containsKey(item)) {
@@ -104,13 +109,12 @@ public class Calculator {
                 varIsPresent = false;
             }
 
-        last = stack.peek();
+        variables.replace("last",stack.peek());
 
         return String.format("%.5f",stack.pop());
     }
 
     public boolean containsOperand(String input){
-        boolean containsOper = false;
         for (char item:input.toCharArray()){
             switch (item){
                 case '+':
@@ -131,7 +135,7 @@ public class Calculator {
     public boolean containsChars(String input){
         boolean charIsPresent = false;
         for (char item : input.toCharArray()){
-            if ((item > 'a' && item < 'z') || (item > 'A' && item < 'Z')){
+            if ((item >= 'a' && item <= 'z') || (item >= 'A' && item <= 'Z')){
                 charIsPresent = true;
                 break;
             }else {
@@ -144,7 +148,7 @@ public class Calculator {
     public boolean containsNumbers(String input){
         boolean numIsPresent = false;
         for (char item : input.toCharArray()){
-            if (item > '0' && item < '9'){
+            if (item >= '0' && item <= '9'){
                 numIsPresent = true;
                 break;
             }else {
@@ -165,6 +169,9 @@ public class Calculator {
 
         for (String item : formula) {
             try {
+                if(item.equals("")){
+                    continue;
+                }
                 if (!containsOperand(item)){
                     output.append(item + " ");
                     continue;
@@ -181,20 +188,36 @@ public class Calculator {
                             if (operators.empty() || operators.peek().equals("(")) {
                                 operators.push("+");
                             } else {
-                                while (!(operators.empty())) {
-                                    output.append(operators.pop() + " ");
+                                try {
+                                    while (!(operators.empty()) || operators.peek().equals("(")) {
+                                        if(!operators.peek().equals("(")) {
+                                            output.append(operators.pop() + " ");
+                                        }else{
+                                            break;
+                                        }
+                                    }
+                                    operators.push(item);
+                                } catch (Exception e2) {
+                                    operators.push(item);
                                 }
-                                operators.push(item);
                             }
                             break;
                         case "-":
                             if (operators.empty() || operators.peek().equals("(")) {
                                 operators.push("-");
                             } else {
-                                while (!(operators.empty())) {
-                                    output.append(operators.pop() + " ");
+                                try {
+                                    while (!(operators.empty()) || operators.peek().equals("(")) {
+                                        if(!operators.peek().equals("(")) {
+                                            output.append(operators.pop() + " ");
+                                        }else{
+                                            break;
+                                        };
+                                    }
+                                    operators.push(item);
+                                }catch (Exception e2){
+                                    operators.push(item);
                                 }
-                                operators.push(item);
                             }
                             break;
                         case "*":
@@ -202,7 +225,12 @@ public class Calculator {
                                 operators.push("*");
                             } else {
                                 while (operators.peek().equals("*") || operators.peek().equals("/") || operators.empty()) {
-                                    output.append(operators.pop() + " ");
+                                    if(!operators.peek().equals("(")) {
+                                        output.append(operators.pop() + " ");
+                                    }
+                                    else{
+                                        break;
+                                    }
                                 }
                                 operators.push(item);
                             }
@@ -212,7 +240,11 @@ public class Calculator {
                                 operators.push("/");
                             } else {
                                 while (operators.peek().equals("*") || operators.peek().equals("/") || operators.empty()) {
-                                    output.append(operators.pop() + " ");
+                                    if(!operators.peek().equals("(")) {
+                                        output.append(operators.pop() + " ");
+                                    }else{
+                                        break;
+                                    }
                                 }
                                 operators.push(item);
                             }
@@ -237,7 +269,7 @@ public class Calculator {
     }
 
     public String[] refactorInputLine(String input){
-        input = input.trim();
+        input = input.strip();
         StringBuilder editedInput = new StringBuilder();
 
         //Input WhiteSpace between all operators if not present
@@ -258,13 +290,30 @@ public class Calculator {
                     }
                     break;
                 case '-':
-                    if(i == 0) {
-                        editedInput.append(input.charAt(i));
-                    }else if(input.charAt(i-1) == 'e'){
-                        editedInput.append(input.charAt(i));
-                    }else if(input.substring(0,i).matches(".*\\d.*")){
-                        editedInput.append(" " + input.charAt(i) + " ");
+                    try {
+                        if ((containsNumbers(Character.toString(input.charAt(i+1)))) && (containsOperand(Character.toString(input.charAt(i-1))))){
+                            editedInput.append(input.charAt(i));
+                        }else {
+                            editedInput.append(" " +input.charAt(i) + " ");
+                        }
+                    }catch (Exception e){
+                        if(i != 0) {
+                            editedInput.append(input.charAt(i) + " ");
+                        }else {
+                            editedInput.append(input.charAt(i));
+                        }
                     }
+//                    if(editedInput.length() > 0){
+//                        String b = editedInput.toString().stripTrailing();
+//                        String a = Character.toString(b.stripTrailing().charAt(b.length() - 1));
+//                        if(editedInput.length() > 0 && containsNumbers(a)){
+//                            editedInput.append(" " + input.charAt(i) + " ");
+//                        }else if (editedInput.length() > 0 && containsOperand(a)) {
+//                            editedInput.append(input.charAt(i));
+//                        }
+//                    }else{
+//                        editedInput.append(input.charAt(i));
+//                    }
                     break;
                 case ' ':
                     break;
