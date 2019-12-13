@@ -9,10 +9,14 @@ public class Builder {
     private static final String ANSWER = "Answer";
     private ArrayList<MultichoiceQuestion> multichoiceQuestions;
     private ArrayList<SinglechoiceQuestion> singlechoiceQuestions;
+    private ArrayList<StudentsResponse> studentsResponses;
+    private InputProcessor ip;
 
     public Builder(){
         multichoiceQuestions = new ArrayList<>();
         singlechoiceQuestions = new ArrayList<>();
+        studentsResponses = new ArrayList<>();
+        ip = new InputProcessor();
     }
 
     public void createExam(String [] input){
@@ -20,6 +24,8 @@ public class Builder {
         String question;
         String answers;
         ArrayList<String> options;
+        String fullname;
+        ArrayList<String> response;
 
         for (int i = 0; i < input.length; i++) {
             if(input[i] == null){
@@ -38,6 +44,7 @@ public class Builder {
                     }
                      answers = input[i];
                     getMultichoiceQuestions().add(new MultichoiceQuestion(ID,question.trim(),options,answers));
+                    i++;
                     break;
                 case SINGLECHOICE:
                     ID = Integer.parseInt(input[++i].trim().substring(0,input[i].indexOf('.')-1));
@@ -51,11 +58,24 @@ public class Builder {
                     }
                     answers = input[i];
                     getSinglechoiceQuestions().add(new SinglechoiceQuestion(ID,question.trim(),options,answers));
+                    i++;
                     break;
+                default:
+                    fullname = input[i];
+                    response = new ArrayList<>();
+                    i++;
+                    while(input[i] != null && !input[i].equals(EMPTYLINE) && ip.startsWithNum(input[i]) ){
+                        response.add(input[i]);
+                        i++;
+                    }
+                    getStudentsResponses().add(new StudentsResponse(fullname,response));
+                    break;
+
 
             }
         }
     }
+
 
 
     public ArrayList<MultichoiceQuestion> getMultichoiceQuestions() {
@@ -64,5 +84,9 @@ public class Builder {
 
     public ArrayList<SinglechoiceQuestion> getSinglechoiceQuestions() {
         return singlechoiceQuestions;
+    }
+
+    public ArrayList<StudentsResponse> getStudentsResponses() {
+        return studentsResponses;
     }
 }

@@ -96,4 +96,13 @@ public class InputProcessor {
 
         return output;
     }
+
+    public boolean startsWithNum(String input){
+        if(input.charAt(0) >= '0' && input.charAt(0) <= '9'){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

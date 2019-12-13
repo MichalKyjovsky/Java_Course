@@ -5,8 +5,16 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        InputProcessor ip = new InputProcessor();
         Builder builder = new Builder();
+        builder.createExam(refactorInput());
+        ArrayList<MultichoiceQuestion> multichoiceQuestions = builder.getMultichoiceQuestions();
+        ArrayList<SinglechoiceQuestion> singlechoiceQuestions = builder.getSinglechoiceQuestions();
+        ArrayList<StudentsResponse> studentsResponses = builder.getStudentsResponses();
+        System.out.println();
+    }
+
+    public static String[] refactorInput(){
+        InputProcessor ip = new InputProcessor();
         ArrayList<String> lines = ip.manageInput();
         String[] input = new String[lines.size()];
 
@@ -31,10 +39,6 @@ public class Main {
                 i--;
             }
         }
-
-        builder.createExam(processedInput);
-        ArrayList<MultichoiceQuestion> multichoiceQuestions = builder.getMultichoiceQuestions();
-        ArrayList<SinglechoiceQuestion> singlechoiceQuestions = builder.getSinglechoiceQuestions();
-        System.out.println();
+        return processedInput;
     }
 }
