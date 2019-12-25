@@ -1,0 +1,9 @@
+package cz.cuni.mff.java.annotations;
+
+public class DeprecationExample {
+
+    @Deprecated
+    public static void foo() {
+        System.out.println("This is a deprecated method");
+    }
+}
