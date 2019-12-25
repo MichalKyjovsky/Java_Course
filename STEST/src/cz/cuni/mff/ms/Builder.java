@@ -39,10 +39,10 @@ public class Builder {
                     i++;
 
                     while (!input[i].contains(ANSWER)){
-                        options.add(input[i]);
+                        options.add(input[i] + " -" + i);
                         i++;
                     }
-                     answers = input[i];
+                    answers = input[i];
                     getMultichoiceQuestions().add(new MultichoiceQuestion(ID,question.trim(),options,answers));
                     i++;
                     break;
@@ -53,7 +53,7 @@ public class Builder {
                     i++;
 
                     while (!input[i].contains(ANSWER)){
-                        options.add(input[i]);
+                        options.add(input[i] + " -" + i);
                         i++;
                     }
                     answers = input[i];

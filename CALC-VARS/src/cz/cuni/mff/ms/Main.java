@@ -12,7 +12,7 @@ public class Main {
 
 
             for (int i = 0; i < lines.size(); i++) {
-                if (lines.get(i).equals("")) {
+                if (lines.get(i).equals("") || lines.get(i).matches("\\s*")){
                     continue;
                 } else {
                     last = calculator.calculateInput(lines.get(i));

@@ -6,10 +6,13 @@ public class Main {
 
     public static void main(String[] args) {
         Builder builder = new Builder();
+        EvaluationKeywords evaluationKeywords = new EvaluationKeywords();
         builder.createExam(refactorInput());
         ArrayList<MultichoiceQuestion> multichoiceQuestions = builder.getMultichoiceQuestions();
         ArrayList<SinglechoiceQuestion> singlechoiceQuestions = builder.getSinglechoiceQuestions();
         ArrayList<StudentsResponse> studentsResponses = builder.getStudentsResponses();
+        evaluationKeywords.prepareForEvaluation(multichoiceQuestions,singlechoiceQuestions,studentsResponses);
+
         System.out.println();
     }
 

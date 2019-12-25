@@ -93,11 +93,16 @@ public class Calculator {
                         case "/":
                             numA = stack.pop();
                             numB = stack.pop();
-                            stack.push(numB / numA);
+                            if (numA != 0) {
+                                stack.push(numB / numA);
+                            }else{
+                                variables.replace("last",(double)0);
+                                return "ERROR";
+                            }
                             break;
                     }
                     }else {
-                        last = 0;
+                        variables.replace("last",(double)0);
                         return "ERROR";
                     }
                 }
@@ -307,9 +312,10 @@ public class Calculator {
                     break;
                 case '-':
                     try {
-                        if ((containsNumbers(Character.toString(input.charAt(i+1)))) && (containsOperand(Character.toString(input.charAt(i-1))))){
+                        if ((containsNumbers(Character.toString(input.charAt(i+1)))) && (containsOperand(Character.toString(input.charAt(i-1)))) && (input.charAt(i-1) != '(' && input.charAt(i-1) != ')')){
                             editedInput.append(input.charAt(i));
-                        }else if (i == 0 && containsOperand(Character.toString(input.charAt(i+1)))){
+                            editedInput.append(input.charAt(i));
+                        }else if ((i == 0 && containsOperand(Character.toString(input.charAt(i+1)))) || (containsOperand(Character.toString(input.charAt(i-1))) && (containsOperand(Character.toString(input.charAt(i+1)))))){
                             editedInput.append(input.charAt(i)+ "1 * ");
                         } else {
                             editedInput.append(" " +input.charAt(i) + " ");
