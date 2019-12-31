@@ -21,6 +21,7 @@ public class Builder {
 
     public void createExam(String [] input){
         int ID;
+        int queueNumber;
         String question;
         String answers;
         ArrayList<String> options;
@@ -28,6 +29,7 @@ public class Builder {
         ArrayList<String> response;
 
         for (int i = 0; i < input.length; i++) {
+            queueNumber = i;
             if(input[i] == null){
                 break;
             }
@@ -43,7 +45,7 @@ public class Builder {
                         i++;
                     }
                     answers = input[i];
-                    getMultichoiceQuestions().add(new MultichoiceQuestion(ID,question.trim(),options,answers));
+                    getMultichoiceQuestions().add(new MultichoiceQuestion(ID,question.trim(),options,answers,queueNumber));
                     i++;
                     break;
                 case SINGLECHOICE:
@@ -57,21 +59,24 @@ public class Builder {
                         i++;
                     }
                     answers = input[i];
-                    getSinglechoiceQuestions().add(new SinglechoiceQuestion(ID,question.trim(),options,answers));
+                    getSinglechoiceQuestions().add(new SinglechoiceQuestion(ID,question.trim(),options,answers,queueNumber));
                     i++;
                     break;
                 default:
-                    fullname = input[i];
-                    response = new ArrayList<>();
-                    i++;
-                    while(input[i] != null && !input[i].equals(EMPTYLINE) && ip.startsWithNum(input[i]) ){
-                        response.add(input[i]);
+                    if(input[i].contains(" ")) {
+                        fullname = input[i];
+                        response = new ArrayList<>();
                         i++;
+                        while (input[i] != null && !input[i].equals(EMPTYLINE) && ip.startsWithNum(input[i])) {
+                            response.add(input[i]);
+                            i++;
+                        }
+                        getStudentsResponses().add(new StudentsResponse(fullname, response));
                     }
-                    getStudentsResponses().add(new StudentsResponse(fullname,response));
+                    else{
+                        System.out.printf("ERROR - line %d\n",i);
+                    }
                     break;
-
-
             }
         }
     }

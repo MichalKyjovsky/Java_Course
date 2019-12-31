@@ -1,12 +1,10 @@
 package cz.cuni.mff.ms;
 
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Hashtable;
+import java.util.*;
 
 public class StudentsResponse {
+
     private String fullName;
-    private int pointGained;
     ArrayList<String> response;
     private Dictionary<Integer,ArrayList<Character>> studentsAnswer;
 
@@ -14,21 +12,28 @@ public class StudentsResponse {
         this.fullName = fullName;
         this.response = response;
         this.studentsAnswer = new Hashtable<>();
-        this.pointGained = 0;
     }
 
     public void processStudentsAnswer(){
-        ArrayList<Character> answers = new ArrayList<>();
         for (String item : this.response) {
+            ArrayList<Character> answers = new ArrayList<>();
             int questionNumber = Integer.parseInt(item.substring(0,item.indexOf('.')));
             for (char character: item.substring(item.indexOf('.') + 1).toUpperCase().toCharArray()){
                 if(character >= 'A' && character <= 'Z') {
                     answers.add(character);
                 }
             }
-            studentsAnswer.put(questionNumber,answers);
+            Collections.sort(answers);
+            getStudentsAnswer().put(questionNumber,answers);
         }
     }
 
 
+    public Dictionary<Integer, ArrayList<Character>> getStudentsAnswer() {
+        return studentsAnswer;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
 }

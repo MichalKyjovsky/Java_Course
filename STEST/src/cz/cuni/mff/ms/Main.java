@@ -12,8 +12,13 @@ public class Main {
         ArrayList<SinglechoiceQuestion> singlechoiceQuestions = builder.getSinglechoiceQuestions();
         ArrayList<StudentsResponse> studentsResponses = builder.getStudentsResponses();
         evaluationKeywords.prepareForEvaluation(multichoiceQuestions,singlechoiceQuestions,studentsResponses);
+        ArrayList<StudentsResults> studentsResults = evaluationKeywords.evaluateExams();
 
-        System.out.println();
+        for (StudentsResults sr: studentsResults) {
+            System.out.println(sr);
+            System.out.println();
+        }
+
     }
 
     public static String[] refactorInput(){

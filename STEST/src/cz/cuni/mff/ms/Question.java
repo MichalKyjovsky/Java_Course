@@ -1,19 +1,22 @@
 package cz.cuni.mff.ms;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
-public abstract class Question {
+public class Question implements Comparator<Question> {
+    protected int queueNumber;
     protected int ID;
     protected String question;
     protected ArrayList<String> options;
     protected String answersInput;
     protected ArrayList<Character> answersSplitted;
 
-    public Question(int ID, String question, ArrayList<String> options, String answersInput){
+    public Question(int ID, String question, ArrayList<String> options, String answersInput,int queueNumber){
         this.ID = ID;
         this.question = question;
         this.options = options;
         this.answersInput = answersInput;
+        this.queueNumber = queueNumber;
     }
 
     protected  void setCorrectAnswers(String answers){
@@ -28,28 +31,12 @@ public abstract class Question {
         }
     }
 
-    protected int validateAnsers(){
-        return 0;
-    }
-
-    protected boolean validateCorrectnessOfInput(Question question){
-        int countCheck = 0;
-        int last = 0;
-        for(String item: this.options) {
-            for (char character : this.answersSplitted){
-                if(item.startsWith(Character.toString(character))){
-                    countCheck++;
-                    break;
-                }
-            }
-            if (last == countCheck){
-                System.out.printf("ERROR - line %s\n", item.substring(item.indexOf('-')));
-            }
-        }
-        return countCheck == this.answersSplitted.size();
-    }
-
     public String getAnswersInput(){
         return this.answersInput;
+    }
+
+    @Override
+    public int compare(Question q1, Question q2) {
+        return q1.ID - q2.ID;
     }
 }
