@@ -21,10 +21,13 @@ public class SimpleServer {
                         break;
                     out.println(str);
                 }
+
                 System.out.println("Closing connection");
             }
         } catch (IOException ex) {
             System.out.println(ex);
+
         }
     }
+
 }

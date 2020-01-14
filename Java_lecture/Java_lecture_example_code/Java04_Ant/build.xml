@@ -16,7 +16,7 @@
     </target>
 
     <target name="run" depends="init,compile" description="Executes program">
-        <java fork="true" classname="cz.cuni.mff.java.example01.Hello" classpath="${classes}"/>
+        <java fork="true" classname="cz.cuni.mff.java.antbuild.Hello" classpath="${classes}"/>
     </target>
 
     <target name="clean" description="Deletes generated files">
@@ -27,7 +27,7 @@
     <target name="jdoc" description="Generates javadoc documentation">
         <mkdir dir="${doc}"/>
         <javadoc sourcepath="${src}" destdir="${doc}"/>
-        <!-- <javadoc sourcepath="${src}" destdir="${doc}" link="https://docs.oracle.com/en/java/javase/13/docs/api/"/> -->
+        <!-- <javadoc sourcepath="${src}" destdir="${doc}" link="https://docs.oracle.com/en/java/javase/11/docs/api/"/> -->
     </target>
 
 </project>

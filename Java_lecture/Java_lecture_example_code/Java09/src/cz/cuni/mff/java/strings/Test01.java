@@ -14,10 +14,13 @@ public class Test01 {
 
   public static void main(String[] args) {
     StringBuffer word = null;
-    switch (rnd.nextInt(2)) {
-      case 1:  word = new StringBuffer('P');
-      case 2:  word = new StringBuffer('G');
-      default: word = new StringBuffer('M');
+    int a = rnd.nextInt(3);
+    switch (a) {
+      case 1:  word = new StringBuffer("P");
+      break;
+      case 2:  word = new StringBuffer("G");
+      break;
+      default: word = new StringBuffer("M");
     }
     word.append('a');
     word.append('i');

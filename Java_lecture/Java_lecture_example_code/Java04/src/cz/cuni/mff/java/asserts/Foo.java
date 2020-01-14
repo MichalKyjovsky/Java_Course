@@ -3,11 +3,12 @@ package cz.cuni.mff.java.asserts;
 public class Foo {
     public static void main(String args[]) {
         Baz.testAsserts();
+        Bar.test();
     }
 }
 
 class Bar {
-    static {
+    static void test(){
         Baz.testAsserts();
     }
 }

@@ -63,6 +63,7 @@ public class WalkDir {
     }
 
     public static void main(String[] args) {
-        printDirWithSubdirs(".");
+//        printDirWithSubdirs("/home/parzival/Java_Course");
+        printDirContent("/home/parzival/Java_Course");
     }
 }

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_java04_ant" default="compile.module.java04_ant">
+  <dirname property="module.java04_ant.basedir" file="${ant.file.module_java04_ant}"/>
+  
+  <property name="module.jdk.home.java04_ant" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.java04_ant" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.java04_ant" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.java04_ant" value="-encoding UTF-8 -source 13 -target 13 ${compiler.args}"/>
+  
+  <property name="java04_ant.output.dir" value="undefined"/>
+  <property name="java04_ant.testoutput.dir" value="undefined"/>
+  
+  <path id="java04_ant.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="java04_ant.module.production.classpath">
+    <path refid="${module.jdk.classpath.java04_ant}"/>
+  </path>
+  
+  <path id="java04_ant.runtime.production.module.classpath"/>
+  
+  <path id="java04_ant.module.classpath">
+    <path refid="${module.jdk.classpath.java04_ant}"/>
+  </path>
+  
+  <path id="java04_ant.runtime.module.classpath"/>
+  
+  
+  <patternset id="excluded.from.module.java04_ant">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.java04_ant">
+    <patternset refid="excluded.from.module.java04_ant"/>
+  </patternset>
+  
+  <path id="java04_ant.module.sourcepath">
+    <dirset dir="${module.java04_ant.basedir}/../../Java04_Ant">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.java04_ant" depends="compile.module.java04_ant.production,compile.module.java04_ant.tests" description="Compile module Java04_Ant"/>
+  
+  <target name="compile.module.java04_ant.production" depends="register.custom.compilers" description="Compile module Java04_Ant; production classes">
+    <mkdir dir="${java04_ant.output.dir}"/>
+    <javac2 destdir="${java04_ant.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.java04_ant}/javac">
+      <compilerarg line="${compiler.args.java04_ant}"/>
+      <bootclasspath refid="java04_ant.module.bootclasspath"/>
+      <classpath refid="java04_ant.module.production.classpath"/>
+      <src refid="java04_ant.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.java04_ant"/>
+    </javac2>
+    
+    <copy todir="${java04_ant.output.dir}">
+      <fileset dir="${module.java04_ant.basedir}/../src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.java04_ant.tests" depends="register.custom.compilers,compile.module.java04_ant.production" description="compile module Java04_Ant; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.java04_ant" description="cleanup module">
+    <delete dir="${java04_ant.output.dir}"/>
+    <delete dir="${java04_ant.testoutput.dir}"/>
+  </target>
+</project>

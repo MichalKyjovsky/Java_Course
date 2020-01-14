@@ -1,8 +1,12 @@
 package cz.cuni.mff.java.io.ex01;
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class FileInfo {
 
@@ -18,6 +22,12 @@ public class FileInfo {
             System.out.println("Size: " + Files.size(path) + " B");
         } catch (IOException ex) {
             System.out.println("Cannot get size");
+        }
+
+        try(BufferedWriter bfw = new BufferedWriter(new FileWriter(path.toFile()))){
+            bfw.append("Hello");
+        }catch (IOException e){
+            e.printStackTrace();
         }
     }
 

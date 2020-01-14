@@ -5,7 +5,7 @@ public class SimpleLockExample extends Thread {
     public static class Resource {
         private long data;
         public void doSomething() {
-		    data++;
+            data++;
 	    }
 
         public long getData() {
@@ -33,6 +33,7 @@ public class SimpleLockExample extends Thread {
     }
 
     public static void main(String[] argv) {
+        int a = 1 < 2 ? 1 : 2;
         Resource resource = new Resource();
         Thread[] ths = {new SimpleLockExample(resource), new SimpleLockExample(resource), new SimpleLockExample(resource) };
         for (Thread t : ths) {

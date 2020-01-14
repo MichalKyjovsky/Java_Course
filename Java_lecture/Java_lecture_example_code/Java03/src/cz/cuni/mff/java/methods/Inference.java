@@ -9,9 +9,9 @@ public class Inference {
 
     public static void main(String[] args) {
         var i = 1;
-        //var var = i;
+//        var var = i;
 
         System.out.println(i);
-        //System.out.println(var);
+//        System.out.println(var);
     }
 }

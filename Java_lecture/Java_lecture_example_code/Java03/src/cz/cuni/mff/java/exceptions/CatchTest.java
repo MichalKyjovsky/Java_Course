@@ -4,7 +4,7 @@ public class CatchTest {
 
     public static void main(String[] argv) {
         try {
-
+//            int a = 5 / 0;
             throw new MyException("Exception occurred");
 
         } catch (MyException e) {

@@ -2,8 +2,14 @@ package cz.cuni.mff.java.example02;
 
 public class ConstructorTest3 extends ConstructorTest2 {
 
+    /**
+     * This non-static initialization syntax is necessary
+     * for initialization of abstract class */
+    {
+        int ac = 0;
+    }
     public ConstructorTest3(int a) {
-        super(a);
+        //super(a);
         System.out.println("Test3(int)");
     }
 

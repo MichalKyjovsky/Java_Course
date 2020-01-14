@@ -5,7 +5,7 @@ import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class CmdLine {
+public class Main {
 
     public static String getLine(String prefix) throws IOException {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
@@ -27,7 +27,7 @@ public class CmdLine {
     public static void main(String[] args) {
         try {
             //System.out.println(getLine("> "));
-            System.out.println(getLineViaConsole("> "));
+            System.out.println(getLineViaConsole("$ "));
         } catch (IOException ex) {
             System.out.println("IOException occurred");
         }

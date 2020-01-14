@@ -1,8 +1,19 @@
 package cz.cuni.mff.java.example02;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 class TX1 {
     public void foo() {
         System.out.println("TX1.foo()");
+    }
+    public void voo(){
+        Object[] oa = new Object[] {"a","ab"};
+        int j = 0x12_ab_12;
+        System.out.println(j);
+        Collection<?> co = new ArrayList<Object>();
+
     }
 }
 
@@ -26,3 +37,11 @@ public class TX3 extends TX2 {
         o.foo();
     }
 }
+interface A {
+    void log(String msg);
+}
+interface B {
+    void log(String msg);
+}
+
+class C implements A, B {public void log(String msg) {System.out.println(msg);}}

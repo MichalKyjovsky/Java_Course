@@ -36,6 +36,6 @@ public class ZIP {
     }
 
     public static void main(String[] args) {
-        createArchive(Path.of("Java07/src/cz/cuni/mff/java/io/ex01"));
+        createArchive(Path.of("/home/parzival/Java_Course/Java_lecture/Java_lecture_example_code/Java07/src/cz/cuni/mff/java/io/ex01"));
     }
 }

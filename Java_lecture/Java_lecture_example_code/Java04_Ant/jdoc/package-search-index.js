@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"cz.cuni.mff.java.anotherpackage"},{"l":"cz.cuni.mff.java.antbuild"}]
